@@ -1,9 +1,80 @@
-﻿@{
-    Layout = null;
-    ViewData["Title"] = "Home Page";
+﻿@using System.Text.RegularExpressions
+@{
+    Layout = Layout;
+    string Name = "Alan";
+    string LastName = "Bruno";
+    int CountTo(int n){
+        return Enumerable.Range(1, n).Sum();
+    }
+    int LetterA = Regex.Matches("nel mezzo del cammin di nostra vita", "a").Count;
+    Random rnd = new Random();
+    List<int> Numbers = new List<int>();
+    for (var i = 0; i < 20; i++)
+    {
+        Numbers.Add(rnd.Next(1, 90));
+    }
+    DateTime Today = DateTime.Now;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="container-xxl">
+    <section class="p-4">
+        <h2>
+            1. Dichiarare una variabile valorizzandola con il nostro nome.
+            Dichiarare un'altra variabile valorizzandola con il nostro cognome.
+            Stampare il nostro nome e cognome all'interno di un tag h2.
+        </h2>
+        <h2>@Name @LastName</h2>
+    </section>
+    <section class="p-4">
+        <h2>
+            2. Creare una funzione che stampa la somma dei numeri che vanno da 1 a n (con n passato come parametro - n incluso)
+            Stampare dentro uno span il risultato.
+        </h2>
+        <p>
+            Somma da 1 sino a <Span>@CountTo(10)</Span>
+        </p>
+    </section>
+    <section class="p-4">
+        <h2>
+            3. Contare quante volte la lettera a è presente nalla frase "nel mezzo del cammin di nostra vita" e stampare questo valore in pagina
+        </h2>
+        <p>
+            la lettera a è presente <Span>@LetterA</Span>
+        </p>
+    </section>
+    <section class="p-4">
+        <h2>
+            4. Creare una List<int> di 20 numeri interi (generati random da 1 a 90, 1 e 90 inclusi) e mostrare in pagina solo i numeri compresi tra 20 e 70
+        </h2>
+        <p>
+            @{
+                foreach(var num in Numbers){
+                if(num>19&&num<71){
+                        @String.Format("{0} ",num);
+                }
+                } 
+            }
+        </p>
+    </section>
+    <section class="p-4">
+        <h2>
+             5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime) con il formato anno-mese-giorno ore:minuti:secondi
+        </h2>
+        <p>
+            @Today.ToString("yyyy/MM/dd HH:mm:ss");
+        </p>
+    </section>
+        <section class="p-4">
+        <h2>
+            6. Partendo dalla data di oggi (usando la classe DateTime) stampare in pagina
+            a. la data di 7 giorni fa
+            b. che giorno della settimana è oggi (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+            c. che giorno della settimana sarà nello stesso giorno e mese di oggi ma tra un anno (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+        </h2>
+        <p>
+            @Today.AddDays(-7).ToString("dddd dd/MM/yyyy") <br>
+            Giorno della settimana di oggi @Today.AddDays(+7).ToString("dddd"); <br>
+            Giorno della settimana dell anno prossimo @Today.AddYears(1).ToString("dddd") <br>
+        </p>
+    </section>
+    </div>
