@@ -8,7 +8,7 @@ namespace la_mia_pizzeria_static.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public EsercizioController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
