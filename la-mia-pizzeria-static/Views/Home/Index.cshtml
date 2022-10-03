@@ -1,9 +1,30 @@
-﻿@{
+﻿@using System.Collections
+@{
     Layout = null;
     ViewData["Title"] = "Home Page";
+    ArrayList pizze = new ArrayList();
+    pizze.Add(new string[] { "Margerita", "Pomodori pelati, spolverata di formaggio grattugiato e fior di latte d’Agerola", "/img/MARGHERITA-1.jpg", "6.00 €" });
+    pizze.Add(new string[] { "Diavola", "Pomodori pelati, salame piccante spolverata di formaggio grattugiato e fior di latte d’Agerola", "/img/MARGHERITA-1.jpg", "7.00 €" });
+    pizze.Add(new string[] { "Prosciutto e Funghi", "Pomodori pelati, funghi, prosciutto spolverata di formaggio grattugiato e fior di latte d’Agerola", "/img/MARGHERITA-1.jpg", "8.00 €" });
+    pizze.Add(new string[] { "Napoli", "Pomodori pelati, spolverata di formaggio grattugiato e fior di latte d’Agerola", "/img/MARGHERITA-1.jpg", "9.00 €" });
+    pizze.Add(new string[] { "Emilia", "Ragu bolognese, spolverata di formaggio grattugiato e fior di latte d’Agerola", "/img/MARGHERITA-1.jpg", "10.00 €" });
+
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@foreach (string[] pizza in pizze)
+{
+    <div>
+        <img src="@pizza[2]" alt="">
+    </div>
+    <div>
+        <div>
+            @pizza[0]
+        </div>
+        <div>
+            @pizza[1]
+        </div>
+        <div>
+            @pizza[3]
+        </div>
+    </div>
+}
